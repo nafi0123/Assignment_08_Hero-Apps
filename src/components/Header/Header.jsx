@@ -54,26 +54,26 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
-            <Link to="/">
-              <div className="flex items-center">
-                <img className="h-[40px] w-[40px]" src={logo} alt="" />{" "}
-                <h2>HERO.IO</h2>
-              </div>
-            </Link>
-          </a>
+          <Link to="/" className="btn btn-ghost text-xl">
+            <div className="flex items-center">
+              <img className="h-[40px] w-[40px]" src={logo} alt="" />
+              <h2>HERO.IO</h2>
+            </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="https://github.com/nafi0123">
-            {" "}
-            <a className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
-              <FaGithub />
-              Contribute
-            </a>
-          </Link>
+          <a
+            href="https://github.com/nafi0123"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white"
+          >
+            <FaGithub />
+            Contribute
+          </a>
         </div>
       </div>
     </div>
