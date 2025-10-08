@@ -23,7 +23,7 @@ const Home = () => {
 
         <div className="grid md:grid-cols-4 gap-4 justify-center items-center mt-3 ">
           {data.map((card) => (
-            <CardContainer card={card}></CardContainer>
+            <CardContainer key={card.id} card={card}></CardContainer>
           ))}
         </div>
         <div className="flex justify-center items-center my-3">
