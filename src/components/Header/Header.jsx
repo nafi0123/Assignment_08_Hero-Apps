@@ -19,7 +19,10 @@ const Header = () => {
       <NavLink to="/app" className={navItemStyle}>
         Apps
       </NavLink>
-      <NavLink to="/installation" className={navItemStyle}>
+      <NavLink
+        to="/installation"
+        className={navItemStyle}
+      >
         Installation
       </NavLink>
     </>
