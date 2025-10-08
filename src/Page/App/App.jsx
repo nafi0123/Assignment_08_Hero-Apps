@@ -1,14 +1,28 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { useEffect, useState } from "react";
+
 import AppCard from "../AppCard/AppCard";
+import logo from "../../assets/logo.png";
 
 const App = () => {
-  const data = useLoaderData();
-  console.log(data, 5555);
+  // const data = useLoaderData();
+  // console.log(data, 5555);
+
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/twenty.json")
+      .then((res) => res.json())
+      .then((resData) => {
+        setData(resData);
+        setLoading(false);
+      });
+  }, []);
+
+  console.log(data,556)
   return (
     <div>
       <div className="max-w-[1200px] mx-auto p-5 md:p-0">
-    
         <div className="text-center mb-6">
           <h2 className="font-bold text-3xl md:text-4xl">
             Our All Applications
@@ -18,16 +32,13 @@ const App = () => {
           </p>
         </div>
 
-        
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-4">
           <h3 className="text-lg  text-gray-700 font-bold">
-            ({data.length}) Apps Found
+            ({data?.length || 0}) Apps Found
           </h3>
 
           <div className="w-full md:w-1/3 md:mr-7">
-            <label
-              className="flex items-center gap-2 border border-gray-300 rounded-lg px-3 py-2 bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-400"
-            >
+            <label className="flex items-center gap-2 border border-gray-300 rounded-lg px-3 py-2 bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-400">
               <svg
                 className="h-5 w-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,12 +62,21 @@ const App = () => {
           </div>
         </div>
 
-      
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-3 justify-center items-center">
-          {data.map((card) => (
-            <AppCard key={card.id} card={card}></AppCard>
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center items-center h-[60vh]">
+            <img
+              src={logo}
+              alt="Loading..."
+              className="w-20 h-20 animate-spin drop-shadow-lg transition-transform duration-700"
+            />
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-3 justify-center items-center">
+            {data.map((card) => (
+              <AppCard key={card.id} card={card}></AppCard>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import CardContainer from "../CardContainer/CardContainer";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
+import logo from "../../assets/logo.png";
 
 const Home = () => {
-  const data = useLoaderData();
+  
+
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/eight.json")
+      .then((res) => res.json())
+      .then((resData) => {
+        setData(resData);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div>
@@ -21,13 +34,31 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-4 justify-center items-center mt-3 ">
-          {data.map((card) => (
-            <CardContainer key={card.id} card={card}></CardContainer>
-          ))}
-        </div>
+        
+
+        {loading ? (
+          <div className="flex justify-center items-center h-[60vh]">
+            <img
+              src={logo}
+              alt="Loading..."
+              className="w-20 h-20 animate-spin drop-shadow-lg transition-transform duration-700"
+            />
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-4 gap-4 justify-center items-center mt-3">
+            {data.map((card) => (
+              <CardContainer key={card.id} card={card} />
+            ))}
+          </div>
+        )}
+
         <div className="flex justify-center items-center my-3">
-          <Link className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white" to="/app">Show All</Link>
+          <Link
+            className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white"
+            to="/app"
+          >
+            Show All
+          </Link>
         </div>
       </div>
     </div>
