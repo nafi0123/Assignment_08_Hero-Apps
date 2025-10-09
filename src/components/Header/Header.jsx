@@ -13,30 +13,22 @@ const Header = () => {
     }`;
 
   const links = (
-<>
-  <NavLink
-    to="/"
-    className={`${navItemStyle} flex justify-center items-center md:mr-2`}
-  >
-    <FaHome className="text-lg md:mr-2" /> Home
-  </NavLink>
+    <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
+      <NavLink to="/" className={`${navItemStyle} flex items-center`}>
+        <FaHome className="text-lg mr-2" /> Home
+      </NavLink>
 
-  <NavLink
-    to="/app"
-    className={`${navItemStyle} flex justify-center items-center md:mr-2`}
-  >
-    <FaAppStoreIos className="text-lg md:mr-2" /> Apps
-  </NavLink>
+      <NavLink to="/app" className={`${navItemStyle} flex items-center`}>
+        <FaAppStoreIos className="text-lg mr-2" /> Apps
+      </NavLink>
 
-  <NavLink
-    to="/installation"
-    className={`${navItemStyle} flex justify-center items-center md:mr-2`}
-  >
-    <FaDownload className="text-lg md:mr-2" /> Installation
-  </NavLink>
-</>
-
-
+      <NavLink
+        to="/installation"
+        className={`${navItemStyle} flex items-center`}
+      >
+        <FaDownload className="text-lg mr-2" /> Installation
+      </NavLink>
+    </div>
   );
 
   return (
