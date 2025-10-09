@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 import appError from "../../assets/App-Error.png";
 import { Link } from "react-router";
 import {
@@ -16,6 +16,7 @@ const AppDeatails = () => {
   const { id } = useParams();
   const data = useLoaderData();
   const app = data.find((item) => item.id === parseInt(id));
+  const navigate=useNavigate()
   if (!app) {
     return (
       <div className="flex flex-col justify-center items-center my-2 text-center p-5 md:p-0">
@@ -28,11 +29,12 @@ const AppDeatails = () => {
         <p className="text=[17px] md:text-[20px]">
           The page you are looking for is not available.
         </p>
-        <Link to="/">
-          <a className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
-            Home
-          </a>
-        </Link>
+        <a
+          className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white"
+          onClick={() => navigate(-1)}
+        >
+          Go back
+        </a>
       </div>
     );
   }
@@ -97,8 +99,6 @@ const AppDeatails = () => {
           <div className="flex justify-center md:justify-start">
             <button
               onClick={() => handleClicked(app.id)}
-              disabled={install}
-              
               className="bg-green-500 text-white px-5 py-2 rounded-md hover:bg-green-600 transition-all"
             >
               {install ? "Installed" : `Install Now ${app.size} MB`}

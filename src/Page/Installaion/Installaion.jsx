@@ -35,6 +35,24 @@ const Installaion = () => {
       setAppList(sortedBySize);
     }
   };
+
+  const handleSortHighToLow = (type) => {
+    setSort(type);
+    if (type === "Size") {
+      const sortedBySize = [...appList].sort((a, b) => b.size - a.size);
+      setAppList(sortedBySize);
+    } else if (type === "Rating") {
+      const sortedByRating = [...appList].sort(
+        (a, b) => b.ratingAvg - a.ratingAvg
+      );
+      setAppList(sortedByRating);
+    } else if (type === "Download") {
+      const sortedByDownloads = [...appList].sort(
+        (a, b) => b.downloads - a.downloads
+      );
+      setAppList(sortedByDownloads);
+    }
+  };
   const handleUninstall = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -73,17 +91,33 @@ const Installaion = () => {
           <p className="font-semibold text-gray-700 text-sm">
             {appList.length} Apps Found
           </p>
-          <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-500">Sort By</label>
-            <select
-              className="border border-gray-300 text-sm rounded-md p-1"
-              onChange={(e) => handleSort(e.target.value)}
-            >
-              <option value="">Select</option>
-              <option value="Size">Size</option>
-              <option value="Download">Download</option>
-              <option value="Rating">Rating</option>
-            </select>
+
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <label className="text-sm text-gray-500">Sort By</label>
+              <select
+                className="border border-gray-300 text-sm rounded-md p-1"
+                onChange={(e) => handleSort(e.target.value)}
+              >
+                <option value="">Low-High</option>
+                <option value="Size">Size</option>
+                <option value="Download">Download</option>
+                <option value="Rating">Rating</option>
+              </select>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="text-sm text-gray-500">Sort By</label>
+              <select
+                className="border border-gray-300 text-sm rounded-md p-1"
+                onChange={(e) => handleSortHighToLow(e.target.value)}
+              >
+                <option value="">High-Low</option>
+                <option value="Size">Size</option>
+                <option value="Download">Download</option>
+                <option value="Rating">Rating</option>
+              </select>
+            </div>
           </div>
         </div>
 

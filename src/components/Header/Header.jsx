@@ -16,23 +16,23 @@ const Header = () => {
 <>
   <NavLink
     to="/"
-    className={`${navItemStyle} flex justify-center items-center mr-2`}
+    className={`${navItemStyle} flex justify-center items-center md:mr-2`}
   >
-    <FaHome className="text-lg mr-2" /> Home
+    <FaHome className="text-lg md:mr-2" /> Home
   </NavLink>
 
   <NavLink
     to="/app"
-    className={`${navItemStyle} flex justify-center items-center mr-2`}
+    className={`${navItemStyle} flex justify-center items-center md:mr-2`}
   >
-    <FaAppStoreIos className="text-lg mr-2" /> Apps
+    <FaAppStoreIos className="text-lg md:mr-2" /> Apps
   </NavLink>
 
   <NavLink
     to="/installation"
-    className={`${navItemStyle} flex justify-center items-center mr-2`}
+    className={`${navItemStyle} flex justify-center items-center md:mr-2`}
   >
-    <FaDownload className="text-lg mr-2" /> Installation
+    <FaDownload className="text-lg md:mr-2" /> Installation
   </NavLink>
 </>
 

@@ -17,7 +17,11 @@ const addToStoreApp = (id) => {
   const storedData = getStoreApp();
 
   if (storedData.includes(id)) {
-    return;
+    MySwal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "All  ready installed!",
+    });
   } else {
     MySwal.fire({
       title: "Good job!",

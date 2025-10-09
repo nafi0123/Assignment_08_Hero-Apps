@@ -2,9 +2,10 @@ import React from "react";
 import Error from "../../assets/error-404.png";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const ErrorPage = () => {
+  const navigate=useNavigate()
   return (
     <div className="bg-gray-50">
       <Header></Header>
@@ -16,11 +17,11 @@ const ErrorPage = () => {
         <p className="text=[17px] md:text-[20px]">
           The page you are looking for is not available.
         </p>
-        <Link to="/">
-          <a className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
-            Home
+
+          <a className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white" onClick={()=>navigate(-1)}>
+            Go back
           </a>
-        </Link>
+
       </div>
       <Footer></Footer>
     </div>
