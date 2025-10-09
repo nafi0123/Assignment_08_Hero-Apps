@@ -22,14 +22,14 @@ const Banner = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          <button className="flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-lg text-lg hover:bg-[#632EE3] transition-all">
+          <a href="https://play.google.com/store/games?hl=en" className="flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-lg text-lg hover:bg-[#632EE3] transition-all">
             <FaGooglePlay className="text-2xl" />
             Google Play
-          </button>
-          <button className="flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-lg text-lg hover:bg-[#9F62F2] transition-all">
+          </a>
+          <a href="https://www.apple.com/app-store/" className="flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-lg text-lg hover:bg-[#9F62F2] transition-all">
             <FaAppStoreIos className="text-2xl" />
             App Store
-          </button>
+          </a>
         </div>
 
         <div className="mt-12 w-full flex justify-center">

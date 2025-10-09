@@ -70,8 +70,7 @@ const Header = () => {
         <div className="navbar-end">
           <a
             href="https://github.com/nafi0123"
-            target="_blank"
-            rel="noopener noreferrer"
+            
             className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white"
           >
             <FaGithub />

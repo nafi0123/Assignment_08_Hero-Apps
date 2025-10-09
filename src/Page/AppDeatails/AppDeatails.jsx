@@ -37,7 +37,7 @@ const AppDeatails = () => {
     );
   }
 
-  const [install, setInstall] = useState(false);
+  const [install, setInstall] = useState(true);
 
   useEffect(() => {
     if (app) {
