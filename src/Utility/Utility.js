@@ -1,3 +1,8 @@
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
 const getStoreApp = () => {
   const storedAppSTR = localStorage.getItem("storeApp");
   if (storedAppSTR) {
@@ -12,8 +17,13 @@ const addToStoreApp = (id) => {
   const storedData = getStoreApp();
 
   if (storedData.includes(id)) {
-    alert(11111);
+    return;
   } else {
+    MySwal.fire({
+      title: "Good job!",
+      icon: "success",
+      draggable: true,
+    });
     storedData.push(id);
     const data = JSON.stringify(storedData);
     localStorage.setItem("storeApp", data);
@@ -35,4 +45,4 @@ const removeStoreApp = (id) => {
   localStorage.setItem("storeApp", JSON.stringify(filteredData));
 };
 
-export { getStoreApp, addToStoreApp, cheackBtn,removeStoreApp };
+export { getStoreApp, addToStoreApp, cheackBtn, removeStoreApp };

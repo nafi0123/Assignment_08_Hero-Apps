@@ -97,6 +97,7 @@ const AppDeatails = () => {
           <div className="flex justify-center md:justify-start">
             <button
               onClick={() => handleClicked(app.id)}
+              disabled={install}
               
               className="bg-green-500 text-white px-5 py-2 rounded-md hover:bg-green-600 transition-all"
             >

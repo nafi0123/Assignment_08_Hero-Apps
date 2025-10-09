@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { getStoreApp, removeStoreApp } from "../../Utility/Utility";
 import InstalationCard from "../InstalationCard/InstalationCard";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 const Installaion = () => {
   const data = useLoaderData();
@@ -33,9 +36,26 @@ const Installaion = () => {
     }
   };
   const handleUninstall = (id) => {
-    removeStoreApp(id);
-    const updatedData = appList.filter((app) => app.id !== id);
-    setAppList(updatedData);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        MySwal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        removeStoreApp(id);
+        const updatedData = appList.filter((app) => app.id !== id);
+        setAppList(updatedData);
+      }
+    });
   };
   return (
     <div className="bg-gray-50 min-h-screen p-5">

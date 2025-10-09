@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.png";
 import { FaGithub } from "react-icons/fa";
+import { FaHome, FaAppStoreIos, FaDownload } from "react-icons/fa";
 
 const Header = () => {
   const navItemStyle = ({ isActive }) =>
@@ -12,20 +13,30 @@ const Header = () => {
     }`;
 
   const links = (
-    <>
-      <NavLink to="/" className={navItemStyle}>
-        Home
-      </NavLink>
-      <NavLink to="/app" className={navItemStyle}>
-        Apps
-      </NavLink>
-      <NavLink
-        to="/installation"
-        className={navItemStyle}
-      >
-        Installation
-      </NavLink>
-    </>
+<>
+  <NavLink
+    to="/"
+    className={`${navItemStyle} flex justify-center items-center mr-2`}
+  >
+    <FaHome className="text-lg mr-2" /> Home
+  </NavLink>
+
+  <NavLink
+    to="/app"
+    className={`${navItemStyle} flex justify-center items-center mr-2`}
+  >
+    <FaAppStoreIos className="text-lg mr-2" /> Apps
+  </NavLink>
+
+  <NavLink
+    to="/installation"
+    className={`${navItemStyle} flex justify-center items-center mr-2`}
+  >
+    <FaDownload className="text-lg mr-2" /> Installation
+  </NavLink>
+</>
+
+
   );
 
   return (
@@ -70,7 +81,6 @@ const Header = () => {
         <div className="navbar-end">
           <a
             href="https://github.com/nafi0123"
-            
             className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white"
           >
             <FaGithub />

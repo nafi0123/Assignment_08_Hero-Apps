@@ -29,7 +29,7 @@ const AppCard = ({ card }) => {
         <div className="flex justify-between items-center mt-4 text-gray-700">
           <div className="flex items-center gap-2">
             <FaDownload className="text-blue-500" />
-            <span className="text-sm">{card.downloads.toLocaleString()}</span>
+            <span className="text-sm">{(card.downloads / 1000000).toFixed(1)}M</span>
           </div>
 
           <div className="flex items-center gap-2">

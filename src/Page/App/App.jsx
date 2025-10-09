@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 
 import AppCard from "../AppCard/AppCard";
 import logo from "../../assets/logo.png";
@@ -9,6 +9,11 @@ const App = () => {
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const term = search.trim().toLocaleLowerCase();
+  const searchApp = term
+    ? data.filter((app) => app.title.toLocaleLowerCase().includes(term))
+    : data;
 
   useEffect(() => {
     fetch("/twenty.json")
@@ -19,7 +24,16 @@ const App = () => {
       });
   }, []);
 
-  console.log(data,556)
+  const handleChange = (val) => {
+    setSearch(val);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    },300);
+  };
+
+  console.log(data, 556);
   return (
     <div>
       <div className="max-w-[1200px] mx-auto p-5 md:p-0">
@@ -34,7 +48,7 @@ const App = () => {
 
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-4">
           <h3 className="text-lg  text-gray-700 font-bold">
-            ({data?.length || 0}) Apps Found
+            ({searchApp?.length || 0}) Apps Found
           </h3>
 
           <div className="w-full md:w-1/3 md:mr-7">
@@ -54,6 +68,8 @@ const App = () => {
                 />
               </svg>
               <input
+                value={search}
+                onChange={(e) => handleChange(e.target.value)}
                 type="search"
                 placeholder="Search apps..."
                 className="w-full outline-none text-gray-700 placeholder-gray-400 bg-transparent"
@@ -71,8 +87,8 @@ const App = () => {
             />
           </div>
         ) : (
-          <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-3 justify-center items-center">
-            {data.map((card) => (
+          <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-3 justify-center items-center mb-3.5">
+            {searchApp.map((card) => (
               <AppCard key={card.id} card={card}></AppCard>
             ))}
           </div>
