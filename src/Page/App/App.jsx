@@ -25,15 +25,17 @@ const App = () => {
   }, []);
 
   const handleChange = (val) => {
+    {
+      search.length === 0 && <div>App is not found</div>;
+    }
     setSearch(val);
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
-    },300);
+    }, 300);
   };
 
-  console.log(data, 556);
   return (
     <div>
       <div className="max-w-[1200px] mx-auto p-5 md:p-0">
@@ -85,6 +87,10 @@ const App = () => {
               alt="Loading..."
               className="w-20 h-20 animate-spin drop-shadow-lg transition-transform duration-700"
             />
+          </div>
+        ) : searchApp.length === 0 ? (
+          <div className="flex justify-center items-center h-[60vh] text-xl font-semibold text-gray-500">
+            App is not found
           </div>
         ) : (
           <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-3 justify-center items-center mb-3.5">

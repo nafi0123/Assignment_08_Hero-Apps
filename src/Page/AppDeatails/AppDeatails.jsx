@@ -100,6 +100,7 @@ const AppDeatails = () => {
             <button
               onClick={() => handleClicked(app.id)}
               className="bg-green-500 text-white px-5 py-2 rounded-md hover:bg-green-600 transition-all"
+              disabled={install}
             >
               {install ? "Installed" : `Install Now ${app.size} MB`}
               {/* Install Now ({app.size} MB) */}
